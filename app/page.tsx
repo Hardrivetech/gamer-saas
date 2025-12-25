@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, Trophy, Activity, Users } from 'lucide-react';
+import { Search, Trophy, Activity, Users, Hammer } from 'lucide-react';
 
 interface PlayerStats {
   username: string;
@@ -11,7 +11,7 @@ interface PlayerStats {
   main: string;
 }
 
-export default function GameStatsSaaS() {
+export default function StatForge() {
   const [query, setQuery] = useState('');
   const [stats, setStats] = useState<PlayerStats | null>(null);
   const [loading, setLoading] = useState(false);
@@ -41,9 +41,12 @@ export default function GameStatsSaaS() {
     <div className="min-h-screen bg-slate-900 text-white p-8 font-sans">
       {/* Header */}
       <header className="max-w-4xl mx-auto mb-12 text-center">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
-          StatForge
-        </h1>
+        <div className="flex items-center justify-center gap-3">
+          <Hammer className="w-10 h-10 text-orange-500" />
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-400 to-red-600 bg-clip-text text-transparent">
+            StatForge
+          </h1>
+        </div>
         <p className="text-slate-400 mt-2">Analyze your performance. Dominate the ladder.</p>
       </header>
 
