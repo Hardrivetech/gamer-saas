@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +22,10 @@ export const metadata: Metadata = {
   },
   description: "Deep-dive performance trackers for popular games. Analyze your performance, compare with friends, and dominate the ladder.",
   keywords: ["gaming", "analytics", "stats", "esports", "StatForge", "tracker"],
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "StatForge | Pro Gaming Analytics",
     description: "Deep-dive performance trackers for popular games. Analyze your performance, compare with friends, and dominate the ladder.",
@@ -43,9 +49,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-900`}
       >
+        <Navbar />
         {children}
+        <footer className="border-t border-slate-800 py-8 text-center text-slate-400">
+          <div className="flex justify-center gap-6 mb-4">
+            <Link href="/privacy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+          </div>
+          <p className="text-sm">
+            &copy; {new Date().getFullYear()} StatForge. All rights reserved.
+          </p>
+        </footer>
       </body>
     </html>
   );

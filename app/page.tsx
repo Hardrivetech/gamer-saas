@@ -30,6 +30,7 @@ export default function StatForge() {
 
       if (!res.ok) throw new Error(data.error || 'Failed to fetch');
       setStats(data);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message);
     } finally {
