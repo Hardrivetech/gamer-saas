@@ -42,7 +42,7 @@ export default function GameStatsSaaS() {
       {/* Header */}
       <header className="max-w-4xl mx-auto mb-12 text-center">
         <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
-          ProTracker.gg
+          StatForge
         </h1>
         <p className="text-slate-400 mt-2">Analyze your performance. Dominate the ladder.</p>
       </header>
