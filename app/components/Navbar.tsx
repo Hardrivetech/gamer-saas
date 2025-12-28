@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { Hammer, LogOut } from "lucide-react";
+import { Hammer, LogOut, Settings } from "lucide-react";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut, User as FirebaseUser } from "firebase/auth";
 import { auth } from "../firebase";
@@ -48,7 +48,27 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           {user ? (
             <div className="flex items-center gap-4">
-              <span className="text-sm text-slate-300 hidden sm:block">{user.email}</span>
+              <Link href="/profile">
+                {user.photoURL ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={user.photoURL}
+                    alt="Profile picture"
+                    className="w-6 h-6 rounded-full object-cover hover:ring-2 hover:ring-orange-500 transition-all"
+                  />
+                ) : (
+                  <div className="w-6 h-6 rounded-full bg-orange-600 flex items-center justify-center text-xs font-bold text-white hover:ring-2 hover:ring-orange-500 transition-all">
+                    {user.email?.charAt(0).toUpperCase()}
+                  </div>
+                )}
+              </Link>
+              <Link
+                href="/settings"
+                className="text-slate-400 hover:text-white transition-colors"
+                title="Settings"
+              >
+                <Settings className="w-5 h-5" />
+              </Link>
               <button
                 onClick={handleLogout}
                 className="text-slate-400 hover:text-white transition-colors"
